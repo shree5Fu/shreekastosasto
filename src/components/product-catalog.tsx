@@ -43,6 +43,15 @@ export function ProductCatalog({ initialSearch = '' }: ProductCatalogProps) {
   useEffect(() => {
     initializeMockData()
     
+    // Read search query from URL client-side
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const search = params.get('search')
+      if (search) {
+        setSearchQuery(search)
+      }
+    }
+    
     const fetchProducts = async () => {
       setIsLoading(true)
       const connected = await checkSupabaseConnection()

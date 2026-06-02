@@ -1,20 +1,14 @@
 import { Hero } from '@/components/hero'
 import { ProductCatalog } from '@/components/product-catalog'
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ search?: string }>
-}) {
-  const params = await searchParams
-  const initialSearch = params.search || ''
-
+export default function HomePage() {
   return (
     <>
       <Hero />
       <div id="catalog">
-        <ProductCatalog initialSearch={initialSearch} />
+        <ProductCatalog />
       </div>
     </>
   )
 }
+
